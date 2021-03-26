@@ -4,6 +4,7 @@
   --content-color-dark-black: #492d31;
   --title-color-light-pink: #f37b83;
   --content-color-light-pink: #a88590;
+  --toggle-menu-color: #fff;
 }
 * {
   padding: 0;
@@ -11,7 +12,12 @@
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
 }
-/* session 1 - home */
+/* session */
+.session {
+  height: 100vh;
+  padding-left: 4%;
+}
+/* content-left - pagination */
 .content-left {
   width: 23.4%;
   height: 100vh;
@@ -19,19 +25,59 @@
   position: fixed;
   top: 0;
   left: 0;
-}
-.content-right {
-  width: 76.6%;
-  margin-left: 23.4%;
-}
-.session {
-  height: 100vh;
   padding-left: 4%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
+.nav-toggle {
+  height: 23px;
+  width: 30px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+  transition: 0.5s;
+}
+.nav-toggle:hover {
+  justify-content: flex-end;
+}
+.nav-toggle::before {
+  content: '';
+  width: 21px;
+  height: 3px;
+  background-color: var(--toggle-menu-color);
+  position: absolute;
+  top: 0;
+  transition: 0.5s;
+}
+.nav-toggle::after {
+  content: '';
+  width: 30px;
+  height: 3px;
+  background-color: var(--toggle-menu-color);
+  position: absolute;
+  bottom: 0;
+}
+.menu-line {
+  width: 13px;
+  height: 3px;
+  background-color: var(--toggle-menu-color);
+  transition: 0.5s;
+}
+/* session 1 - home */
+
 .home {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   background-color: var(--background-color-home-content-left);
+}
+
+/* content-right */
+.content-right {
+  width: 76.6%;
+  margin-left: 23.4%;
 }
 
 .home-content-left {
@@ -77,7 +123,7 @@
 }
 
 .home-content-right {
-  width: 57%;
+  width: 59.1%;
 }
 .home-content-right img {
   width: 100%;
@@ -93,6 +139,18 @@
 
 /* Large devices (desktops, less than 1200px) */
 @media (max-width: 1199.98px) {
+  .content-left {
+    width: 100%;
+    height: 55px;
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+  .content-right {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 55px;
+  }
 }
 
 /*  Large devices (desktops, 992px and up) */
@@ -109,6 +167,12 @@
 
 /*  Small devices (landscape phones, less than 768px) */
 @media (max-width: 767.98px) {
+  .home-content-right {
+    display: none;
+  }
+  .home-content-left {
+    width: 100%;
+  }
 }
 
 /*  Small devices (landscape phones, 576px and up) */
